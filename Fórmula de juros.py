@@ -7,10 +7,10 @@ C = capital
 i = taxa de juros
 t = tempo
 """
-C = int(input("Informe capital para investimento: "))
+C = int(input("\nInforme capital para investimento: "))
 i = 15/1000
-t = int(input("Tempo de aplicação em meses: "))
+t = int(input("\nTempo de aplicação em meses: "))
 M=C*(1 + i)**t
-print (M)
-
-print ('Seu rendimento total será: ',M)
+print ('Juros de retorno= ',M-C)
+res = "{:.2f}".format(M)
+print ('Seu rendimento total será: ',res)
