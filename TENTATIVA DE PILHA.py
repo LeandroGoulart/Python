@@ -33,7 +33,8 @@ for key in types:
     print(f"{key} - {types[key]}")
 
 try:
-    typeList = int(input(''))types[typeList]
+    typeList = int(input(''))
+    types[typeList]
 correct = True
 except:
 print('Valor não definido!')
