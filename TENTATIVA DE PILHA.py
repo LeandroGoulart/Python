@@ -1,68 +1,88 @@
-from ast import Import
 import os
-
-
-import os
-
-menuOptions = {
-1 : 'Adicionar número',
-2 : 'Excluír número',
-0 : 'Sair'
-}
-
-menu = None
-
-list = []
 
 def execFunction(function, value):
     if function == 1:
         list.append[value]
 
-def menuType():
-    correct = False
-    typeList = None
-    while not correct:
-        types = {
+def menuType():         # Início do primeiro menu
+    types = {
         1 : 'Fila',
         2 : 'Pilha'
-}
+    }
+    correct = False
 
-print ('Escola um tipo de lista ------')
+    while not correct:
+        print ('Com que tipo de lista deseja trabalhar ?')
 
-for key in types:
-    print(f"{key} - {types[key]}")
+        for key in types:
+            print(f"{key} - {types[key]}")
 
-try:
-    typeList = int(input(''))
-    types[typeList]
-correct = True
-except:
-print('Valor não definido!')
+        try:
+            typeList = int(input(''))
+            types[typeList]
+            correct = True
+        except:
+            print('Esolha novamente. Opção invalida!!')
 
-return typeList
+    return types[typeList]
 
 
-def menuOptions():
-    print ('Menu -----------------')
-    print ('1 - Adicionar número')
-    print ('2 - Excluír número')
-    print ('0 - Sair')
+def menuOptions():             # Chamada da função de manipulação da lista
+    correct = False    
+    menuOptions = {
+        1 : 'Adicionar número',
+        2 : 'Excluír número',
+        9 : 'Sair'
+    }
 
-def removeFila(fila):
-    pass
+    while not correct:
+        print ('\n*****   MENU   *****\n')
+        for key in menuOptions:
+            print(f"{key} - {menuOptions[key]}")
 
-while menu != 0:
+        try:
+            menuOption = int(input(''))
+            menuOptions[menuOption]
+            correct = True
+            return menuOption
+        except:
+            print(os.system('cls'),'\nPor favor, Escolha uma das opções abaixo!!')
+    
 
-    typeList = menuType()
+def addNumero(registro, list):  # Adicionar numero
+    list.append(registro)
+    
 
-# try:
-# menu = int(input('Para utilizar o menu, insira uma opção numérica: \n'))
-# except:
-# os.system('clear')
-# print('Digite uma opção válida.')
+def removeNumero(registro, list, typeL):     # Remover numero
+    match typeL:
+        case 'Fila':
+            list.remove(list[0])
+        case 'Pilha':
+            list.remove(list[len(list)-1])    
 
-# try:
-# execFunction(menuOptions[menu])
-# except:
-# os.system('clear')
-# print('Opção não encontrada')
+if __name__ == "__main__":          # Iniciando o programa
+    
+    # MOSTRA a opção de lista ou pilha
+    list = []
+    typeL = menuType()
+    menuControl = None
+
+    # PEGA a opção desejada
+    while menuControl != 9:
+        menuControl = menuOptions()
+
+        os.system('cls')
+        
+        match menuControl:
+            case 1:
+                registro = input(f'Registro a ser inserido na {typeL} \n')    
+                addNumero(registro, list)
+            case 2:  
+                if len(list) == 0:
+                    print('OPAA!!! A LISTA JA ESTA VAZIA!!!\n')
+
+                else:
+                    removeNumero(registro, list, typeL)
+        
+
+        print(list)
