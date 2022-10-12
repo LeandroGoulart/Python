@@ -60,7 +60,8 @@ def removeNumero(registro, list, typeL):     # Remover numero
         case 'Pilha':
             list.remove(list[len(list)-1])    
 
-if __name__ == "__main__":          # Iniciando o programa
+if __name__ == "__main__":          
+    # Iniciando o programa
     
     # MOSTRA a opção de lista ou pilha
     list = []
